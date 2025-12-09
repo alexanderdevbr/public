@@ -23,7 +23,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # A pasta que você quer publicar, e.g., 'public', 'dist', '_site'
-          path: './public'
+          path: './'
           
       - name: Deploy to GitHub Pages
         id: deployment
