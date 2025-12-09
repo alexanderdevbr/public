@@ -1,0 +1,31 @@
+# Arquivo: .github/workflows/deploy.yml
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main # Dispara o workflow em push para o branch main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository
+        uses: actions/checkout@v4
+
+      # Se o seu site precisa ser "buildado" (ex: React, Vue, Jekyll), adicione os passos aqui:
+      # - name: Install dependencies
+      #   run: npm ci
+      # - name: Build website
+      #   run: npm run build # Isso geraria a pasta 'dist' ou 'public'
+
+      - name: Upload artifact from public folder
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # A pasta que você quer publicar, e.g., 'public', 'dist', '_site'
+          path: './public'
+          
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        
